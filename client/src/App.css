@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+* {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  background-color: white; /* or any other background color */
+  z-index: 50; /* adjust as needed to ensure it stays on top */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}

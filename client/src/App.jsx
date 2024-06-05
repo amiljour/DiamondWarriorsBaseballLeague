@@ -1,7 +1,8 @@
-import { Link, Navigate, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
-import Home from './views/Home.jsx'
 import Header from './components/Header.jsx'
+import Footer from './components/Footer.jsx'
+import Home from './views/Home.jsx'
 
 function App() {
 
@@ -17,6 +18,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path='*' element={<Navigate to='/' />} />
       </Routes>
+
+      {/* Footer */}
+      <Footer />
     </>
   )
 }
