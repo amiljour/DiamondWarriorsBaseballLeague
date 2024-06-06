@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable react/no-unescaped-entities */
+import { useState } from 'react';
 import HeaderImage from '../assets/DWBL-Header.png';
 import Field1 from '../assets/BaseballField_1.png';
 import Field2 from '../assets/BaseballField_2.png';
