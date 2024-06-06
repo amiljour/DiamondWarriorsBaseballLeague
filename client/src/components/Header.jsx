@@ -55,10 +55,10 @@ const Header = () => {
               <NavLink to="/parent-dashboard" className={({ isActive }) => isActive ? "block py-2 px-3 text-white bg-secondary md:underline rounded md:bg-transparent md:text-secondary md:p-0 md:px-5" : "block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 md:px-5"} onClick={closeNav}>Parent Dashboard</NavLink>
             </li>
             <li className='hidden md:block'>
-              <NavLink to="/register" target="_blank" className={({ isActive }) => isActive ? "block py-2 px-3 text-white bg-secondary md:underline rounded md:bg-transparent md:text-secondary md:p-0 md:px-5" : "block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 md:px-5"} onClick={closeNav}>Register</NavLink>
+              <NavLink to="/register" className={({ isActive }) => isActive ? "block py-2 px-3 text-white bg-secondary md:underline rounded md:bg-transparent md:text-secondary md:p-0 md:px-5" : "block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 md:px-5"} onClick={closeNav}>Register</NavLink>
             </li>
             <li className="md:hidden">
-              <NavLink to="/register" target="_blank" className={({ isActive }) => isActive ? "block py-2 px-3 text-white bg-secondary md:underline rounded md:bg-transparent md:text-secondary md:p-0 md:px-5" : "block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 md:px-5"} onClick={closeNav}>Register</NavLink>
+              <NavLink to="/register" className={({ isActive }) => isActive ? "block py-2 px-3 text-white bg-secondary md:underline rounded md:bg-transparent md:text-secondary md:p-0 md:px-5" : "block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 md:px-5"} onClick={closeNav}>Register</NavLink>
             </li>
           </ul>
         </div>

@@ -5,6 +5,7 @@ import Footer from './components/Footer.jsx'
 import Home from './views/Home.jsx'
 import Gallery from './views/Gallery.jsx'
 import Reviews from './views/Reviews.jsx'
+import Register from './views/Register.jsx'
 
 function App() {
 
@@ -25,6 +26,9 @@ function App() {
 
         {/* Reviews */}
         <Route path='/reviews' element={<Reviews />} />
+
+        {/* Register */}
+        <Route path='/register' element={<Register />} />
       </Routes>
 
       {/* Footer */}
