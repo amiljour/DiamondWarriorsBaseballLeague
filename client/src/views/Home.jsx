@@ -15,7 +15,7 @@ const IntroSection = () => (
 const OfferSection = () => (
   <div className="flex flex-col-reverse md:flex-row justify-around flex-wrap items-center mb-20">
     <img src={Field1} alt="Team Practice" className="w-10/12 md:w-1/2 max-w-[600px]" />
-    <div className="text-lg md:text-2xl text-red-800 w-full md:w-1/2 mb-5">
+    <div className="text-lg md:text-2xl text-primary w-full md:w-1/2 mb-5">
       <li>Expert Coaching: Our experienced coaches provide top-notch training to help players develop their skills and reach their full potential.</li>
       <li>Competitive Leagues: We offer competitive leagues for various age groups, allowing players to challenge themselves and grow as athletes.</li>
       <li>Community Events: We organize community events and tournaments that foster a sense of camaraderie and sportsmanship among players and families.</li>
@@ -26,7 +26,7 @@ const OfferSection = () => (
 
 const WhyChooseSection = () => (
   <div className="flex justify-around flex-wrap items-center">
-    <div className="text-lg md:text-2xl text-purple-800 w-full md:w-1/2 mb-5">
+    <div className="text-lg md:text-2xl text-primary w-full md:w-1/2 mb-5">
       <li>Experienced Coaches: Our coaches bring years of experience and a passion for the game, ensuring each player receives personalized attention and guidance.</li>
       <li>Holistic Development: We focus on the holistic development of our players, teaching them not only baseball skills but also life skills such as leadership, teamwork, and perseverance.</li>
       <li>Small Group Training: With a low player-to-coach ratio, we provide individualized training to help each player improve their game.</li>
@@ -42,7 +42,7 @@ const googleMapsUrl = 'https://www.google.com/maps/search/';
 const LocationSection = () => (
   <div className="flex flex-col-reverse md:flex-row justify-around flex-wrap items-center mb-20">
     <img src={Field3} alt="Baseball Field" className="w-10/12 md:w-1/2 max-w-[600px]" />
-    <div className="text-lg md:text-2xl text-green-800 w-full md:w-1/2 mb-5">
+    <div className="text-lg md:text-2xl text-primary w-full md:w-1/2 mb-5">
       <p className='my-3'>Join us at our premier baseball fields located in the heart of Corona, CA!</p>
       <p className='my-3'>Our facilities provide a safe, modern, and well-maintained environment for players to practice and compete. The fields are easily accessible and offer ample parking for families.</p>
       <p className='my-3'>Our regular practice sessions are held on weekdays, with games scheduled on weekends. We also offer specialized training camps during the summer to help players stay sharp and improve their skills.</p>
@@ -71,7 +71,7 @@ const Home = () => {
           <LocationSection />
           <p className="text-indigo-900 text-3xl font-bold mt-10 mb-5">Join the Diamond Warriors Baseball League today and become part of our winning team! Let's hit it out of the park together.</p>
           <p className="text-indigo-900 text-xl mt-5 mb-10">Contact <a href="mailto:diamondwarriors@example.com" className="underline">diamondwarriors@example.com</a> with any questions or concerns.</p>
-          <a href="/register" className="btn btn-lg btn-success">Register Today</a>
+          <a href="/register" className="btn btn-lg btn-secondary text-base-100">Register Today</a>
         </div>
       </div>
 
@@ -88,7 +88,7 @@ const Home = () => {
           <LocationSection />
           <p className="text-indigo-900 text-2xl font-bold mt-10 mb-5">Join the Diamond Warriors Baseball League today and become part of our winning team! Let's hit it out of the park together.</p>
           <p className="text-indigo-900 text-lg mt-5 mb-10">Contact <a href="mailto:diamondwarriors@example.com" className="underline">diamondwarriors@example.com</a> with any questions or concerns.</p>
-          <a href="/register" className="btn btn-success">Register Today</a>
+          <a href="/register" className="btn btn-secondary text-base-100">Register Today</a>
         </div>
       </div>
     </div>

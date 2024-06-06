@@ -12,7 +12,7 @@ const Gallery = () => {
 
       <div className="flex justify-around flex-wrap px-10">
 
-        {/* Card */}
+        {/* Card 1 */}
         <div className="card w-96 bg-primary shadow-xl my-3">
           <div className="card-body">
             <h2 className="card-title">Field 1</h2>
@@ -20,7 +20,7 @@ const Gallery = () => {
           <figure><img src={Pic1} alt="Field 1" /></figure>
         </div>
 
-        {/* Card */}
+        {/* Card 2 */}
         <div className="card w-96 bg-primary shadow-xl my-3">
           <div className="card-body">
             <h2 className="card-title">Field 2</h2>
@@ -28,7 +28,7 @@ const Gallery = () => {
           <figure><img src={Pic2} alt="Field 2" /></figure>
         </div>
 
-        {/* Card */}
+        {/* Card 3 */}
         <div className="card w-96 bg-primary shadow-xl my-3">
           <div className="card-body">
             <h2 className="card-title">Field 3</h2>
@@ -36,7 +36,7 @@ const Gallery = () => {
           <figure><img src={Pic3} alt="Field 3" /></figure>
         </div>
 
-        {/* Card */}
+        {/* Card 4 */}
         <div className="card w-96 bg-primary shadow-xl my-3">
           <div className="card-body">
             <h2 className="card-title">Field 4</h2>
@@ -44,7 +44,7 @@ const Gallery = () => {
           <figure><img src={Pic4} alt="Field 4" /></figure>
         </div>
 
-        {/* Card */}
+        {/* Card 5 */}
         <div className="card w-96 bg-primary shadow-xl my-3">
           <div className="card-body">
             <h2 className="card-title">Field 5</h2>
@@ -52,7 +52,7 @@ const Gallery = () => {
           <figure><img src={Pic5} alt="Field 5" /></figure>
         </div>
 
-        {/* Card */}
+        {/* Card 6 */}
         <div className="card w-96 bg-primary shadow-xl my-3">
           <div className="card-body">
             <h2 className="card-title">Field 6</h2>

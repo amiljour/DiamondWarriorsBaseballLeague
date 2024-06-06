@@ -4,6 +4,7 @@ import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import Home from './views/Home.jsx'
 import Gallery from './views/Gallery.jsx'
+import Reviews from './views/Reviews.jsx'
 
 function App() {
 
@@ -21,6 +22,9 @@ function App() {
 
         {/* Gallery */}
         <Route path='/gallery' element={<Gallery />} />
+
+        {/* Reviews */}
+        <Route path='/reviews' element={<Reviews />} />
       </Routes>
 
       {/* Footer */}
