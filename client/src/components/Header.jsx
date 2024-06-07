@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import HeaderLogo from '../assets/DWBL-Logo.png';
 
+// eslint-disable-next-line react/prop-types
 const Header = ({ user, role, onLogout }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const navigate = useNavigate();
@@ -26,12 +27,12 @@ const Header = ({ user, role, onLogout }) => {
         {/* Desktop Nav-Bar View */}
         <NavLink to="/" className="lg:flex hidden items-center space-x-3 rtl:space-x-reverse" onClick={closeNav}>
           <img src={HeaderLogo} className="h-10" alt="Diamond Warriors Baseball Logo" />
-          <span className="self-center text-2xl text-primary font-semibold whitespace-nowrap">Diamond Warriors Baseball</span>
+          <span className="self-center text-2xl text-primary font-semibold whitespace-nowrap">Diamond Warriors</span>
         </NavLink>
         {/* Mobile Nav-Bar View */}
         <NavLink to="/" className="flex lg:hidden items-center space-x-3 rtl:space-x-reverse" onClick={closeNav}>
           <img src={HeaderLogo} className="h-10" alt="Diamond Warriors Baseball Logo" />
-          <span className="self-center text-xl text-primary font-semibold whitespace-nowrap">Diamond Warriors Baseball</span>
+          <span className="self-center text-xl text-primary font-semibold whitespace-nowrap">Diamond Warriors</span>
         </NavLink>
         {/* Nav Bar */}
         <button
@@ -64,19 +65,33 @@ const Header = ({ user, role, onLogout }) => {
             {user ? (
               <>
                 <li>
-                  <NavLink to={role === 'admin' ? "/admin-dashboard" : role === 'team1' ? "/team1-dashboard" : role === 'team2' ? "/team2-dashboard" : "/team2-dashboard"} className="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 md:px-5" onClick={closeNav}>
-                    {role === 'admin' ? "Admin Dashboard" : role === 'team1' ? "Team 1 Dashboard" : role === 'team2' ? "Team 2 Dashboard" : "Team 2 Dashboard"}
+                  {role === 'waiting' ? (
+                    <NavLink to="/waiting-for-access" className={({ isActive }) => isActive ? "block py-2 px-3 text-white bg-secondary md:underline rounded md:bg-transparent md:text-secondary md:p-0 md:px-5" : "block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 md:px-5"} onClick={closeNav}>
+                      Waiting For Access
                   </NavLink>
+                  ) : (
+                    <NavLink 
+                      to={role === 'admin' ? "/admin-dashboard" : role === 'team1' ? "/team1-dashboard" : role === 'team2' ? "/team2-dashboard" : "/"} 
+                      className={({ isActive }) => isActive ? "block py-2 px-3 text-white bg-secondary md:underline rounded md:bg-transparent md:text-secondary md:p-0 md:px-5" : "block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 md:px-5"} onClick={closeNav}
+                    >
+                      {role === 'admin' ? "Admin Dashboard" : role === 'team1' ? "Team 1 Dashboard" : role === 'team2' ? "Team 2 Dashboard" : "Dashboard"}
+                    </NavLink>
+                  )}
                 </li>
                 <li>
                   <button onClick={handleLogout} className="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 md:px-5">Logout</button>
                 </li>
               </>
             ) : (
-              <li>
-                <NavLink to="/login" className={({ isActive }) => isActive ? "block py-2 px-3 text-white bg-secondary md:underline rounded md:bg-transparent md:text-secondary md:p-0 md:px-5" : "block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 md:px-5"} onClick={closeNav}>Login</NavLink>
-              </li>
-            )}
+            <li>
+              <NavLink 
+                to="/login" 
+                className={({ isActive }) => isActive ? "block py-2 px-3 text-white bg-secondary md:underline rounded md:bg-transparent md:text-secondary md:p-0 md:px-5" : "block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 md:px-5"} 
+                onClick={closeNav}>
+                Login
+              </NavLink>
+            </li>
+          )}
           </ul>
         </div>
       </nav>

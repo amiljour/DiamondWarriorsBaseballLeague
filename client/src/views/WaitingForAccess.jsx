@@ -1,11 +1,9 @@
-// src/views/WaitingForAccess.jsx
-import React from 'react';
 
 const WaitingForAccess = () => (
-  <div>
-    <h1>Waiting for Access</h1>
-    <p>Your access request is pending approval.</p>
-  </div>
+  <div className="text-center py-5">
+      <h1 className='text-center py-3 text-secondary text-3xl font-bold'>Waiting for Access</h1>
+      <p className="">Your access request is pending approval.</p>
+    </div>
 );
 
 export default WaitingForAccess;

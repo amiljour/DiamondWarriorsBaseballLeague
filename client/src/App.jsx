@@ -1,3 +1,4 @@
+// src/App.jsx
 import { useState, useEffect } from 'react';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import { auth, signOut, db, doc, getDoc, setDoc } from './firebase.js';
@@ -23,10 +24,11 @@ function App() {
     auth.onAuthStateChanged(async (user) => {
       if (user) {
         setUser(user);
-        const userDoc = doc(db, 'users', user.uid);
+        const userDoc = doc(db, 'users', user.email); // Using email as the document ID
         const userSnap = await getDoc(userDoc);
         if (!userSnap.exists()) {
-          await setDoc(userDoc, { role: 'waiting' });
+          await setDoc(userDoc, { email: user.email, role: 'waiting' });
+          setRole('waiting');
         } else {
           const userData = userSnap.data();
           setRole(userData.role);
@@ -45,7 +47,7 @@ function App() {
 
   return (
     <>
-      <Header user={user} onLogout={handleLogout} />
+      <Header user={user} role={role} onLogout={handleLogout} />
 
       <Routes>
         <Route path="/" element={<Home />} />

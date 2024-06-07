@@ -1,5 +1,5 @@
 // src/views/AdminDashboard.jsx
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { db, collection, getDocs, updateDoc, doc } from '../firebase';
 
 const AdminDashboard = () => {
@@ -14,25 +14,33 @@ const AdminDashboard = () => {
     fetchUsers();
   }, []);
 
-  const handleApprove = async (userId) => {
-    const userDoc = doc(db, 'users', userId);
-    await updateDoc(userDoc, { role: 'parent' });
-    setUsers(users.map(user => user.id === userId ? { ...user, role: 'parent' } : user));
+  const handleRoleChange = async (userId, newRole) => {
+    const userDocRef = doc(db, 'users', userId);
+    await updateDoc(userDocRef, { role: newRole });
+    setUsers(users.map(user => user.id === userId ? { ...user, role: newRole } : user));
   };
 
   return (
     <div>
-      <h1>Admin Dashboard</h1>
-      <ul>
-        {users.map(user => (
-          <li key={user.id}>
-            {user.email} - {user.role}
-            {user.role === 'waiting' && (
-              <button onClick={() => handleApprove(user.id)} className="btn btn-success">Approve</button>
-            )}
-          </li>
-        ))}
-      </ul>
+      <div className="text-center py-3">
+        <h1 className='text-3xl font-bold py-3'>Admin Dashboard</h1>
+        <ul>
+          {users.map(user => (
+            <li key={user.id} className='py-3'>
+              {user.email} - {user.role}
+              <select
+                value={user.role}
+                onChange={(e) => handleRoleChange(user.id, e.target.value)}
+              >
+                <option value="admin">Admin</option>
+                <option value="team1">Team 1</option>
+                <option value="team2">Team 2</option>
+                <option value="waiting">Waiting</option>
+              </select>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
