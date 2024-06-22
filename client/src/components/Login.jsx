@@ -81,9 +81,9 @@ const Login = ({ onLogin }) => {
     <div className="space-y-4">
       <button onClick={handleGoogleLogin} className="btn btn-primary flex items-center space-x-2">
         <img src={GoogleLogo} alt="Google Logo" style={{ height: '25px' }} />
-        <span>Login with Google</span>
+        <span>Login or Register with Google</span>
       </button>
-      <form onSubmit={handleEmailPasswordLogin} className="space-y-4">
+      <form onSubmit={handleEmailPasswordLogin} className="space-y-4 text-secondary">
         <input 
           type="email" 
           placeholder="Email" 
