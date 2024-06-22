@@ -1,4 +1,4 @@
-import { useState } from 'react'; 
+import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import HeaderLogo from '../assets/DWBL-Logo.png';
 
@@ -59,9 +59,6 @@ const Header = ({ user, role, onLogout }) => {
             <li>
               <NavLink to="/reviews" className={({ isActive }) => isActive ? "block py-2 px-3 text-white bg-secondary md:underline rounded md:bg-transparent md:text-secondary md:p-0 md:px-5" : "block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 md:px-5"} onClick={closeNav}>Reviews</NavLink>
             </li>
-            <li>
-              <NavLink to="/register" className={({ isActive }) => isActive ? "block py-2 px-3 text-white bg-secondary md:underline rounded md:bg-transparent md:text-secondary md:p-0 md:px-5" : "block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 md:px-5"} onClick={closeNav}>Register</NavLink>
-            </li>
             {user ? (
               <>
                 <li>
@@ -83,15 +80,15 @@ const Header = ({ user, role, onLogout }) => {
                 </li>
               </>
             ) : (
-            <li>
-              <NavLink 
-                to="/login" 
-                className={({ isActive }) => isActive ? "block py-2 px-3 text-white bg-secondary md:underline rounded md:bg-transparent md:text-secondary md:p-0 md:px-5" : "block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 md:px-5"} 
-                onClick={closeNav}>
-                Login
-              </NavLink>
-            </li>
-          )}
+              <li>
+                <NavLink 
+                  to="/login" 
+                  className={({ isActive }) => isActive ? "block py-2 px-3 text-white bg-secondary md:underline rounded md:bg-transparent md:text-secondary md:p-0 md:px-5" : "block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-secondary md:p-0 md:px-5"} 
+                  onClick={closeNav}>
+                  Login / Register
+                </NavLink>
+              </li>
+            )}
           </ul>
         </div>
       </nav>

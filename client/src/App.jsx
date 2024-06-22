@@ -1,4 +1,3 @@
-// src/App.jsx
 import { useState, useEffect } from 'react';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import { auth, signOut, db, doc, getDoc, setDoc } from './firebase.js';
@@ -8,8 +7,7 @@ import Footer from './components/Footer.jsx';
 import Home from './views/Home.jsx';
 import Gallery from './views/Gallery.jsx';
 import Reviews from './views/Reviews.jsx';
-import Register from './views/Register.jsx';
-import Login from './views/Login.jsx';
+import LoginAndRegistration from './views/LoginAndRegistration.jsx';
 import AdminDashboard from './views/AdminDashboard.jsx';
 import Team1Dashboard from './views/Team1Dashboard.jsx';
 import Team2Dashboard from './views/Team2Dashboard.jsx';
@@ -54,8 +52,8 @@ function App() {
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/reviews" element={<Reviews />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login onLogin={setUser} />} />
+        <Route path="/register" element={<LoginAndRegistration onLogin={setUser} />} />
+        <Route path="/login" element={<LoginAndRegistration onLogin={setUser} />} />
 
         {user ? (
           role === 'admin' ? (
@@ -68,7 +66,7 @@ function App() {
             <Route path="/waiting-for-access" element={<WaitingForAccess />} />
           )
         ) : (
-          <Route path="/login" element={<Login onLogin={setUser} />} />
+          <Route path="/login" element={<LoginAndRegistration onLogin={setUser} />} />
         )}
       </Routes>
 

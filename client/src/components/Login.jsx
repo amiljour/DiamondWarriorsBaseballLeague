@@ -1,11 +1,13 @@
-import { useEffect } from 'react';
-import { auth, provider, signInWithPopup, getRedirectResult, db, doc, getDoc, setDoc } from '../firebase';
+import { useState, useEffect } from 'react'; // Import useEffect from React
+import { auth, provider, signInWithPopup, getRedirectResult, signInWithEmailAndPassword, db, doc, getDoc, setDoc } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 import GoogleLogo from '../assets/GoogleLogo.png';
 
 // eslint-disable-next-line react/prop-types
 const Login = ({ onLogin }) => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   useEffect(() => {
     const checkRedirectResult = async () => {
@@ -50,7 +52,7 @@ const Login = ({ onLogin }) => {
     }
   };
 
-  const handleLogin = async () => {
+  const handleGoogleLogin = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
@@ -62,12 +64,44 @@ const Login = ({ onLogin }) => {
     }
   };
 
+  const handleEmailPasswordLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      await handleUserLogin(user);
+      onLogin(user);
+    } catch (error) {
+      console.error("Error during login", error);
+      alert(`Login failed: ${error.message}`);
+    }
+  };
+
   return (
-    <div className="flex items-center justify-center py-10">
-      <button onClick={handleLogin} className="btn btn-primary flex items-center space-x-2">
+    <div className="space-y-4">
+      <button onClick={handleGoogleLogin} className="btn btn-primary flex items-center space-x-2">
         <img src={GoogleLogo} alt="Google Logo" style={{ height: '25px' }} />
         <span>Login with Google</span>
       </button>
+      <form onSubmit={handleEmailPasswordLogin} className="space-y-4">
+        <input 
+          type="email" 
+          placeholder="Email" 
+          value={email} 
+          onChange={(e) => setEmail(e.target.value)} 
+          required 
+          className="input input-bordered w-full"
+        />
+        <input 
+          type="password" 
+          placeholder="Password" 
+          value={password} 
+          onChange={(e) => setPassword(e.target.value)} 
+          required 
+          className="input input-bordered w-full"
+        />
+        <button type="submit" className="btn btn-primary w-full">Login</button>
+      </form>
     </div>
   );
 };

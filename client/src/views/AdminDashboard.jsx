@@ -1,6 +1,5 @@
-// src/views/AdminDashboard.jsx
 import { useState, useEffect } from 'react';
-import { db, collection, getDocs, updateDoc, doc } from '../firebase';
+import { db, collection, getDocs, updateDoc, doc } from '../firebase.js';
 
 const AdminDashboard = () => {
   const [users, setUsers] = useState([]);
