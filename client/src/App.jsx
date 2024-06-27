@@ -22,7 +22,7 @@ function App() {
     auth.onAuthStateChanged(async (user) => {
       if (user) {
         setUser(user);
-        const userDoc = doc(db, 'users', user.email); // Using email as the document ID
+        const userDoc = doc(db, 'users', user.email);
         const userSnap = await getDoc(userDoc);
         if (!userSnap.exists()) {
           await setDoc(userDoc, { email: user.email, role: 'waiting' });

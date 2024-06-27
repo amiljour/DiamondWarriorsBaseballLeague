@@ -8,6 +8,7 @@ const Login = ({ onLogin }) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   useEffect(() => {
     const checkRedirectResult = async () => {
@@ -77,6 +78,10 @@ const Login = ({ onLogin }) => {
     }
   };
 
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+
   return (
     <div className="space-y-4">
       <button onClick={handleGoogleLogin} className="btn btn-primary flex items-center space-x-2">
@@ -92,14 +97,23 @@ const Login = ({ onLogin }) => {
           required 
           className="input input-bordered w-full"
         />
-        <input 
-          type="password" 
-          placeholder="Password" 
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)} 
-          required 
-          className="input input-bordered w-full"
-        />
+        <div className="relative">
+          <input 
+            type={passwordVisible ? "text" : "password"} 
+            placeholder="Password" 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            required 
+            className="input input-bordered w-full"
+          />
+          <button 
+            type="button" 
+            className="absolute inset-y-0 right-0 flex items-center px-2" 
+            onClick={togglePasswordVisibility}
+          >
+            {passwordVisible ? "Hide" : "Show"}
+          </button>
+        </div>
         <button type="submit" className="btn btn-primary w-full">Login</button>
       </form>
     </div>

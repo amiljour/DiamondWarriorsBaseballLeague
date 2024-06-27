@@ -8,7 +8,19 @@
 .sticky {
   position: sticky;
   top: 0;
-  background-color: white; /* or any other background color */
-  z-index: 50; /* adjust as needed to ensure it stays on top */
+  background-color: white;
+  z-index: 50;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.box2 {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.box2 h2 {
+  margin-bottom: 10px;
 }

@@ -7,7 +7,8 @@ const Register = () => {
   const [confirmEmail, setConfirmEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [passwordVisible1, setPasswordVisible1] = useState(false);
+  const [passwordVisible2, setPasswordVisible2] = useState(false);
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
@@ -25,15 +26,19 @@ const Register = () => {
 
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      navigate('/login');
+      navigate('/waiting-for-access');
     } catch (error) {
       console.error("Error during registration", error);
       alert(`Registration failed: ${error.message}`);
     }
   };
 
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
+  const togglePasswordVisibility1 = () => {
+    setPasswordVisible1(!passwordVisible1);
+  };
+
+  const togglePasswordVisibility2 = () => {
+    setPasswordVisible2(!passwordVisible2);
   };
 
   return (
@@ -57,7 +62,7 @@ const Register = () => {
         />
         <div className="relative">
           <input 
-            type={passwordVisible ? "text" : "password"} 
+            type={passwordVisible1 ? "text" : "password"} 
             placeholder="Password" 
             value={password} 
             onChange={(e) => setPassword(e.target.value)} 
@@ -67,14 +72,14 @@ const Register = () => {
           <button 
             type="button" 
             className="absolute inset-y-0 right-0 flex items-center px-2" 
-            onClick={togglePasswordVisibility}
+            onClick={togglePasswordVisibility1}
           >
-            {passwordVisible ? "Hide" : "Show"}
+            {passwordVisible1 ? "Hide" : "Show"}
           </button>
         </div>
         <div className="relative">
           <input 
-            type={passwordVisible ? "text" : "password"} 
+            type={passwordVisible2 ? "text" : "password"} 
             placeholder="Confirm Password" 
             value={confirmPassword} 
             onChange={(e) => setConfirmPassword(e.target.value)} 
@@ -84,9 +89,9 @@ const Register = () => {
           <button 
             type="button" 
             className="absolute inset-y-0 right-0 flex items-center px-2" 
-            onClick={togglePasswordVisibility}
+            onClick={togglePasswordVisibility2}
           >
-            {passwordVisible ? "Hide" : "Show"}
+            {passwordVisible2 ? "Hide" : "Show"}
           </button>
         </div>
         <button type="submit" className="btn btn-primary w-full">Register</button>
