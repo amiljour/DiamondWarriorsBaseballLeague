@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { db, collection, getDocs, updateDoc, doc, deleteUserDocument } from '../firebase.js';
+import { db, collection, getDocs, updateDoc, doc } from '../firebase.js';
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 
 const AdminDashboard = () => {
@@ -45,30 +45,19 @@ const AdminDashboard = () => {
     }
   };
 
-  const deleteAccount = async (userId) => {
-    try {
-      await deleteUserDocument(userId);
-      setUsers(users.filter(user => user.id !== userId));
-      alert(`Account deleted successfully`);
-    } catch (error) {
-      console.error("Error deleting account: ", error);
-      alert(`Failed to delete account`);
-    }
-  };
-
-  const renderUserList = (role, title) => (
+  const renderUserList = (role, title, link) => (
     <div className="flex justify-center w-full" key={role}>
       <div className="flex flex-col items-center w-10/12 border border-gray-300 rounded p-4 mb-8">
-        <h2 className="text-2xl font-bold mb-4">{title}</h2>
+        <a href={link} className="text-2xl font-bold mb-4 underline">{title}</a>
         <div className="flex flex-wrap justify-center w-full">
           <ul className="flex flex-wrap justify-center">
             {users.filter(user => user.role === role && !user.disabled).map(user => (
-              <li key={user.id} className="py-3 m-3 border border-gray-300 w-80 h-72 flex flex-col items-center rounded p-4">
+              <li key={user.id} className="py-3 m-3 border border-gray-300 w-80 h-auto flex flex-col items-center rounded p-4">
                 <p>Email:  &nbsp;{user.email}</p>
                 <p>
                   Role: &nbsp;
                   <select
-                    className="my-3"
+                    className="select select-secondary my-3"
                     value={user.role}
                     onChange={(e) => handleRoleChange(user.id, e.target.value)}
                   >
@@ -90,12 +79,6 @@ const AdminDashboard = () => {
                 >
                   Disable Account
                 </button>
-                <button
-                  className="m-2 bg-gray-500 text-white px-2 py-1 rounded"
-                  onClick={() => deleteAccount(user.id)}
-                >
-                  Delete Account
-                </button>
               </li>
             ))}
           </ul>
@@ -111,7 +94,7 @@ const AdminDashboard = () => {
         <div className="flex flex-wrap justify-center w-full">
           <ul className="flex flex-wrap justify-center">
             {users.filter(user => user.disabled).map(user => (
-              <li key={user.id} className="py-3 m-3 border border-gray-300 w-80 h-24 flex flex-col items-center rounded p-4">
+              <li key={user.id} className="py-3 m-3 border border-gray-300 w-80 h-auto flex flex-col items-center rounded p-4">
                 <p>Email: {user.email}</p>
                 <button
                   className="m-2 bg-green-500 text-white px-2 py-1 rounded"
@@ -141,11 +124,11 @@ const AdminDashboard = () => {
 
   return (
     <div>
-      <div className="text-center py-3">
+      <div className="text-center text-black py-3">
         <h1 className='text-3xl font-bold py-3'>Admin Dashboard</h1>
         {renderUserList('waiting', 'Waiting for Access')}
-        {renderUserList('team1', 'Team 1')}
-        {renderUserList('team2', 'Team 2')}
+        {renderUserList('team1', 'Team 1', '/team1-admin')}
+        {renderUserList('team2', 'Team 2', '/team2-admin')}
         {renderUserList('admin', 'Admin')}
         {renderDisabledUsers()}
       </div>
